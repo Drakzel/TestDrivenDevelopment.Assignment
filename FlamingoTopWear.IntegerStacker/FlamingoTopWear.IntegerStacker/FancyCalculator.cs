@@ -6,49 +6,49 @@ namespace FlamingoTopWear.IntegerStacker
 {
     public class FancyCalculator : IFancyCalculator
     {
-        List<double> Calculator = new List<double>();
+        List<double> Stack = new List<double>();
 
         #region Push, Pop, Top, SecondTop
         public void Push(double num)
         {
-            Calculator.Add(num);
+            Stack.Add(num);
         }
 
         public double? Top()
         {
-            if(Calculator.Count < 1) { return null; }
+            if(Stack.Count < 1) { return null; }
             double num;
-            return num = Calculator.Last();
+            return num = Stack.Last();
         }
 
         public double? SecondTop()
         {
-            if (Calculator.Count < 1) { return null; }
+            if (Stack.Count < 1) { return null; }
             double num;
-            return num = Calculator[Calculator.Count - 2];
+            return num = Stack[Stack.Count - 2];
         }
 
         public void Pop()
         {
-            var toRemove = Calculator[Calculator.Count - 1];
-            Calculator.Remove(toRemove);
+            var toRemove = Stack[Stack.Count - 1];
+            Stack.Remove(toRemove);
         }
         #endregion
 
         #region Calculator, Size, Clear
-        List<double> IFancyCalculator.GetCalc()
+        List<double> IFancyCalculator.GetStack()
         {
-            return Calculator;
+            return Stack;
         }
 
         public int Size()
         {
-            return Calculator.Count;
+            return Stack.Count;
         }
 
         public void Clear()
         {
-            Calculator.Clear();
+            Stack.Clear();
         }
         #endregion
 
@@ -65,9 +65,9 @@ namespace FlamingoTopWear.IntegerStacker
 
         public void AddAll()
         {
-            for (int i = 0; i < Calculator.Count; i++)
+            for (int i = 0; i < Stack.Count; i++)
             {
-                if (Calculator.Count < 2) { break; }
+                if (Stack.Count < 2) { break; }
                 var item1 = Top();
                 var item2 = SecondTop();
                 var total = item1 + item2;
@@ -103,9 +103,9 @@ namespace FlamingoTopWear.IntegerStacker
 
         public void MultiplyAll()
         {
-            for (int i = -1; i < Calculator.Count; i++)
+            for (int i = -1; i < Stack.Count; i++)
             {
-                if (Calculator.Count < 2) { break; }
+                if (Stack.Count < 2) { break; }
                 var item1 = Top();
                 var item2 = SecondTop();
                 var total = item1 * item2;

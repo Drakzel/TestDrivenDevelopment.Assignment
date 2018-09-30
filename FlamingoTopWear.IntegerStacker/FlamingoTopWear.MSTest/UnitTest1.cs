@@ -12,18 +12,17 @@ namespace FlamingoTopWear.MSTest
         public void TestPush()
         {
             IFancyCalculator x = new FancyCalculator();
-            var calc = x.GetCalc();
+            var stack = x.GetStack();
 
             x.Push(45);
-            Assert.IsTrue(calc.Count == 1);
-            Assert.IsTrue(calc.Contains(45));
+            Assert.IsTrue(stack.Count == 1);
+            Assert.IsTrue(stack.Contains(45));
         }
 
         [TestMethod]
         public void TestPushOptions()
         {
             IFancyCalculator x = new FancyCalculator();
-            var calc = x.GetCalc();
 
             x.Push(45);
             x.Push(35);
@@ -85,12 +84,12 @@ namespace FlamingoTopWear.MSTest
         public void TestPop()
         {
             IFancyCalculator x = new FancyCalculator();
-            var calc = x.GetCalc();
+            var stack = x.GetStack();
 
             x.Push(45);
-            Assert.IsTrue(calc.Count == 1);
+            Assert.IsTrue(stack.Count == 1);
             x.Pop();
-            Assert.IsTrue(calc.Count == 0);
+            Assert.IsTrue(stack.Count == 0);
 
         }
 
@@ -98,7 +97,7 @@ namespace FlamingoTopWear.MSTest
         public void TestPopOptions()
         {
             IFancyCalculator x = new FancyCalculator();
-            var calc = x.GetCalc();
+            
 
             for (int i = 1; i <= 3; i++) { x.Push(i); }
             Assert.IsTrue(x.Size() == 3);
@@ -126,16 +125,16 @@ namespace FlamingoTopWear.MSTest
         public void TestSize()
         {
             IFancyCalculator x = new FancyCalculator();
-            var calc = x.GetCalc();
+            var stack = x.GetStack();
 
             x.Push(25);
-            Assert.AreEqual(calc.Count, x.Size());
+            Assert.AreEqual(stack.Count, x.Size());
             Assert.AreEqual(x.Size(), 1);
             x.Push(25);
-            Assert.AreEqual(calc.Count, x.Size());
+            Assert.AreEqual(stack.Count, x.Size());
             Assert.AreEqual(x.Size(), 2);
             x.Push(25);
-            Assert.AreEqual(calc.Count, x.Size());
+            Assert.AreEqual(stack.Count, x.Size());
             Assert.AreEqual(x.Size(), 3);
         }
         #endregion
@@ -145,13 +144,13 @@ namespace FlamingoTopWear.MSTest
         public void TestClear()
         {
             IFancyCalculator x = new FancyCalculator();
-            var calc = x.GetCalc();
+            var stack = x.GetStack();
 
             x.Push(25);
             x.Push(45);
-            Assert.IsTrue(calc.Count == 2);
+            Assert.IsTrue(stack.Count == 2);
             x.Clear();
-            Assert.IsTrue(calc.Count == 0);
+            Assert.IsTrue(stack.Count == 0);
         }
         #endregion
 
@@ -160,9 +159,9 @@ namespace FlamingoTopWear.MSTest
         public void TestAdd()
         {
             IFancyCalculator x = new FancyCalculator();
-            var calc = x.GetCalc();
+            var stack = x.GetStack();
             
-            Assert.IsTrue(calc.Count == 0);
+            Assert.IsTrue(stack.Count == 0);
             x.Push(10);
             x.Push(20);
             x.Push(30);
@@ -190,9 +189,8 @@ namespace FlamingoTopWear.MSTest
         public void TestSubtract()
         {
             IFancyCalculator x = new FancyCalculator();
-            var calc = x.GetCalc();
 
-            Assert.IsTrue(calc.Count == 0);
+            Assert.IsTrue(x.Size() == 0);
             x.Push(10);
             x.Push(20);
             x.Push(30);
@@ -207,9 +205,9 @@ namespace FlamingoTopWear.MSTest
         public void TestMultiply()
         {
             IFancyCalculator x = new FancyCalculator();
-            var calc = x.GetCalc();
+            var calc = x.GetStack();
 
-            Assert.IsTrue(calc.Count == 0);
+            Assert.IsTrue(x.Size() == 0);
             x.Push(10);
             x.Push(20);
             x.Push(30);
